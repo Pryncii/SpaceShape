@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class laser : MonoBehaviour
+public class TriangleProj : MonoBehaviour
 {
 
     public int damage = 1;
     public int health = 1;
     public float speed;
     public GameObject effect;
-
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +19,6 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
 
         if (health <= 0)
         {
@@ -32,17 +26,19 @@ public class laser : MonoBehaviour
             Instantiate(effect, transform.position, Quaternion.identity);
         }
 
-        if (other.CompareTag("TP"))
-        {
-            other.GetComponent<TriangleProj>().health -= damage;
-            Debug.Log(other.GetComponent<TriangleProj>().health);
-            
-        }
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
+    }
 
-        if (other.CompareTag("TS"))
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Laser"))
         {
-            other.GetComponent<TriangleShip>().health -= damage;
-            Debug.Log(other.GetComponent<TriangleShip>().health);
+
+            other.GetComponent<laser>().health -= damage;
+            Debug.Log(other.GetComponent<laser>().health);
+
+
+
         }
     }
 }
