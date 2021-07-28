@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1977974547472262029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.42, y: 6.41, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 1
-  speed: 7
+  speed: 6
   effect: {fileID: 6323936646637817602, guid: c23a6282c1f62fb488e91e42fc74ae4c, type: 3}
 --- !u!50 &1977974547472262038
 Rigidbody2D:

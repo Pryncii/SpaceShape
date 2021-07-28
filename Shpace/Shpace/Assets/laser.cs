@@ -20,18 +20,19 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
         if (health <= 0)
         {
             Destroy(gameObject);
             Instantiate(effect, transform.position, Quaternion.identity);
         }
 
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+      
         if (other.CompareTag("TP"))
         {
             other.GetComponent<TriangleProj>().health -= damage;
@@ -43,6 +44,12 @@ public class laser : MonoBehaviour
         {
             other.GetComponent<TriangleShip>().health -= damage;
             Debug.Log(other.GetComponent<TriangleShip>().health);
+        }
+
+        if (other.CompareTag("Asteroid"))
+        {
+            other.GetComponent<Asteroid>().health -= damage;
+            Debug.Log(other.GetComponent<Asteroid>().health);
         }
     }
 }

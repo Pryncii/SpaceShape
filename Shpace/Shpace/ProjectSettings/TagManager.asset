@@ -7,6 +7,8 @@ TagManager:
   - Laser
   - TP
   - TS
+  - Asteroid
+  - Target
   layers:
   - Default
   - TransparentFX

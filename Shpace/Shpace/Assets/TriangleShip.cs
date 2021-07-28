@@ -13,16 +13,28 @@ public class TriangleShip : MonoBehaviour
     public float wait;
     public float start;
     public Transform shotPoint;
+    public Transform Player;
+    public Rigidbody2D rb;
+    public Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(effect, transform.position, Quaternion.identity);
+        rb = this.GetComponent<Rigidbody2D>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 direction = Player.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        if (Vector2.Distance(transform.position, Player.position) > 5)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, Player.position, speed * Time.deltaTime);
+        }
 
         if (health <= 0)
         {
@@ -50,8 +62,6 @@ public class TriangleShip : MonoBehaviour
 
             other.GetComponent<laser>().health -= damage;
             Debug.Log(other.GetComponent<laser>().health);
-
-
 
         }
     }

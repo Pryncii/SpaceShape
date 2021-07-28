@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriangleProj : MonoBehaviour
+public class Asteroid : MonoBehaviour
 {
 
     public int damage = 1;
-    public int health = 1;
+    public int health = 5;
     public float speed;
     public GameObject effect;
 
@@ -26,7 +26,7 @@ public class TriangleProj : MonoBehaviour
             Instantiate(effect, transform.position, Quaternion.identity);
         }
 
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
